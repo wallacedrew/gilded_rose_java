@@ -28,14 +28,15 @@ class GildedRoseTest {
     @Test
     void updateQuality_updateDexterity() {
         Item expectedItem = new Item("+5 Dexterity Vest", 9, 19);
+        Item originalItem = new Item("+5 Dexterity Vest", 10, 20);
+        GildedRose app = setupGildedRose(originalItem);
 
-        GildedRose app = createGildedRose(new Item("+5 Dexterity Vest", 10, 20));
         app.updateQuality();
 
         assertEquals(expectedItem.toString(), app.items[0].toString());
     }
 
-    private static GildedRose createGildedRose(Item item) {
+    private static GildedRose setupGildedRose(Item item) {
         Item[] items = new Item[]{new Item(item.name, item.sellIn, item.quality)};
         GildedRose app = new GildedRose(items);
         return app;
