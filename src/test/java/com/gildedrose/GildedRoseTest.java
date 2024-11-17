@@ -27,13 +27,17 @@ class GildedRoseTest {
 
     @Test
     void updateQuality_updateDexterity() {
-        Item expectedItem = new Item("+5 Dexterity Vest", 9, 19);
         Item originalItem = new Item("+5 Dexterity Vest", 10, 20);
         GildedRose app = setupGildedRose(originalItem);
 
         app.updateQuality();
 
+        Item expectedItem = expectedUpdate(originalItem.name, 9, 19);
         assertEquals(expectedItem.toString(), app.items[0].toString());
+    }
+
+    private static Item expectedUpdate(String name, int sellIn, int quality) {
+        return new Item(name, sellIn, quality);
     }
 
     private static GildedRose setupGildedRose(Item item) {
