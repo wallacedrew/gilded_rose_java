@@ -31,5 +31,4 @@ class GildedRoseBaselineTest {
             "Backstage passes to a TAFKAL80ETC concert, 4, 50\n" +
             "Conjured Mana Cake, 2, 5\n";
 
-
 }
