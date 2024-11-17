@@ -50,6 +50,17 @@ class GildedRoseTest {
         assertEquals(expectedItem.toString(), app.items[0].toString());
     }
 
+    @Test
+    void updateQuality_updateBackstage() {
+        Item originalItem = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49);
+        Item expectedItem = expectedUpdate(originalItem.name, 4, 50);
+        GildedRose app = setupGildedRose(originalItem);
+
+        app.updateQuality();
+
+        assertEquals(expectedItem.toString(), app.items[0].toString());
+    }
+
     private static Item expectedUpdate(String name, int sellIn, int quality) {
         return new Item(name, sellIn, quality);
     }
