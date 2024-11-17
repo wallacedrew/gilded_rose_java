@@ -23,12 +23,13 @@ class GildedRoseTest {
 
     @Test
     void updateQuality_updateDexterity() {
+        Item expectedItem = new Item("+5 Dexterity Vest", 9, 19);
+
         GildedRose app = createGildedRose("+5 Dexterity Vest", 10, 20);
         app.updateQuality();
-        assertEquals(9, app.items[0].sellIn);
-        assertEquals(19, app.items[0].quality);
-    }
 
+        assertEquals(expectedItem.toString(), app.items[0].toString());
+    }
 
     private static GildedRose createGildedRose(String foo, int sellIn, int quality) {
         Item[] items = new Item[]{new Item(foo, sellIn, quality)};
