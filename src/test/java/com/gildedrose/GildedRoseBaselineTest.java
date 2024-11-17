@@ -29,6 +29,12 @@ class GildedRoseBaselineTest {
             "Backstage passes to a TAFKAL80ETC concert, 14, 21\n" +
             "Backstage passes to a TAFKAL80ETC concert, 9, 50\n" +
             "Backstage passes to a TAFKAL80ETC concert, 4, 50\n" +
-            "Conjured Mana Cake, 2, 5\n";
+            "Conjured Mana Cake, 2, 5\n\n";
+
+    @Test
+    public void run_store_for_two_days() {
+        String[] args = new String[]{};
+        assertEquals(expectedResult, TexttestFixture.runGildedRose(args));
+    }
 
 }

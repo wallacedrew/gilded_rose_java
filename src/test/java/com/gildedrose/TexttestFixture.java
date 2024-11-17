@@ -6,8 +6,6 @@ public class TexttestFixture {
     }
 
     public static String runGildedRose(String[] args) {
-        System.out.println("OMGHAI!");
-
         int days = getDays(args);
         Item[] items = setupItems();
         GildedRose app = new GildedRose(items);
@@ -23,16 +21,21 @@ public class TexttestFixture {
     }
 
     private static String operateStore(int days, Item[] items, GildedRose app) {
+        StringBuffer storeLog = new StringBuffer("OMGHAI!\n");
         for (int i = 0; i < days; i++) {
             System.out.println("-------- day " + i + " --------");
+            storeLog.append("-------- day " + i + " --------\n");
             System.out.println("name, sellIn, quality");
+            storeLog.append("name, sellIn, quality\n");
             for (Item item : items) {
                 System.out.println(item);
+                storeLog.append(item + "\n");
             }
             System.out.println();
+            storeLog.append("\n");
             app.updateQuality();
         }
-        return "";
+        return storeLog.toString();
     }
 
     private static Item[] setupItems() {
