@@ -17,22 +17,23 @@ class GildedRoseTest {
 
     @Test
     void updateQuality_updateAgedBrie() {
-        Item[] items = new Item[]{new Item("Aged Brie", 2, 0)};
-        GildedRose app1 = new GildedRose(items);
-        GildedRose app = app1;
+        Item originalItem = new Item("Aged Brie", 2, 0);
+        Item expectedItem = expectedUpdate(originalItem.name, 1, 1);
+        GildedRose app = setupGildedRose(originalItem);
+
         app.updateQuality();
-        assertEquals(1, app.items[0].sellIn);
-        assertEquals(1, app.items[0].quality);
+
+        assertEquals(expectedItem.toString(), app.items[0].toString());
     }
 
     @Test
     void updateQuality_updateDexterity() {
         Item originalItem = new Item("+5 Dexterity Vest", 10, 20);
+        Item expectedItem = expectedUpdate(originalItem.name, 9, 19);
         GildedRose app = setupGildedRose(originalItem);
 
         app.updateQuality();
 
-        Item expectedItem = expectedUpdate(originalItem.name, 9, 19);
         assertEquals(expectedItem.toString(), app.items[0].toString());
     }
 
