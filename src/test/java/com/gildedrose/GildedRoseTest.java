@@ -39,6 +39,17 @@ class GildedRoseTest {
         assertEquals(expectedItem.toString(), app.items[0].toString());
     }
 
+    @Test
+    void updateQuality_updateSulfuras() {
+        Item originalItem = new Item("Sulfuras, Hand of Ragnaros", -1, 80);
+        Item expectedItem = expectedUpdate(originalItem.name, -1, 80);
+        GildedRose app = setupGildedRose(originalItem);
+
+        app.updateQuality();
+
+        assertEquals(expectedItem.toString(), app.items[0].toString());
+    }
+
     private static Item expectedUpdate(String name, int sellIn, int quality) {
         return new Item(name, sellIn, quality);
     }
