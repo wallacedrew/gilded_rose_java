@@ -5,13 +5,13 @@ public class TexttestFixture {
         runGildedRose(args);
     }
 
-    public static void runGildedRose(String[] args) {
+    public static String runGildedRose(String[] args) {
         System.out.println("OMGHAI!");
 
         int days = getDays(args);
         Item[] items = setupItems();
         GildedRose app = new GildedRose(items);
-        operateStore(days, items, app);
+        return operateStore(days, items, app);
     }
 
     private static int getDays(String[] args) {
@@ -22,7 +22,7 @@ public class TexttestFixture {
         return days;
     }
 
-    private static void operateStore(int days, Item[] items, GildedRose app) {
+    private static String operateStore(int days, Item[] items, GildedRose app) {
         for (int i = 0; i < days; i++) {
             System.out.println("-------- day " + i + " --------");
             System.out.println("name, sellIn, quality");
@@ -32,6 +32,7 @@ public class TexttestFixture {
             System.out.println();
             app.updateQuality();
         }
+        return "";
     }
 
     private static Item[] setupItems() {
