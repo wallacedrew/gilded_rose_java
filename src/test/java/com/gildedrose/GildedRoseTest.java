@@ -7,15 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GildedRoseTest {
 
     @Test
-    void updateQuality_returnsNameOfFirstItem() {
-        Item[] items = new Item[]{new Item("foo", 0, 0)};
-        GildedRose app1 = new GildedRose(items);
-        GildedRose app = app1;
-        app.updateQuality();
-        assertEquals("foo", app.items[0].name);
-    }
-
-    @Test
     void updateQuality_updateAgedBrie() {
         Item originalItem = new Item("Aged Brie", 2, 0);
         Item expectedItem = expectedUpdate(originalItem.name, 1, 1);
