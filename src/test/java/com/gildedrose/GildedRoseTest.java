@@ -51,14 +51,14 @@ class GildedRoseTest {
     @Test
     void updateQuality_updateAgedBrie_for_four_days() {
         Item originalItem = new Item(ItemName.AGED_BRIE, 2, 0);
-        Item expectedItem = expectedUpdate(originalItem.name, -2, 4);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 6);
         validateMultiple(expectedItem, originalItem);
     }
 
     @Test
     void updateQuality_updateAgedBrie_for_four_days_upgrades_with_age() {
         Item originalItem = new Item(ItemName.AGED_BRIE, -1, 6);
-        Item expectedItem = expectedUpdate(originalItem.name, -2, 7);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 8);
         validate(expectedItem, originalItem);
     }
 
@@ -93,14 +93,14 @@ class GildedRoseTest {
     @Test
     void updateQuality_updateBackstage_upgrades_with_age() {
         Item originalItem = new Item(ItemName.BACKSTAGE, -1, 6);
-        Item expectedItem = expectedUpdate(originalItem.name, -2, 9);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 0);
         validate(expectedItem, originalItem);
     }
 
     @Test
     void updateQuality_backstage_lo_grade_for_four_days() {
         Item originalItem = new Item(ItemName.BACKSTAGE, 1, 1);
-        Item expectedItem = expectedUpdate(originalItem.name, -3, 13);
+        Item expectedItem = expectedUpdate(originalItem.name, -3, 0);
         validateMultiple(expectedItem, originalItem);
     }
 
@@ -122,7 +122,7 @@ class GildedRoseTest {
     @Test
     void updateQuality_updateConjured_for_four_days() {
         Item originalItem = new Item(ItemName.CONJURED, 3, 6);
-        Item expectedItem = expectedUpdate(originalItem.name, -1, 2);
+        Item expectedItem = expectedUpdate(originalItem.name, -1, 1);
         validateMultiple(expectedItem, originalItem);
     }
 

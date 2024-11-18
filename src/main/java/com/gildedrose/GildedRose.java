@@ -12,50 +12,65 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
 
+            if (!item.name.equals(ItemName.AGED_BRIE)) {
+                if (!item.name.equals(ItemName.BACKSTAGE)) {
+                    if (item.quality > 0) {
+                        if (!item.name.equals(ItemName.SULFURAS)) {
+                            item.quality = item.quality - 1;
+                        }
+                    }
+                }
+            }
+
             if (item.name.equals(ItemName.AGED_BRIE)) {
-                upgrade(item);
-                item.sellIn--;
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                }
             }
 
             if (item.name.equals(ItemName.BACKSTAGE)) {
-                upgrade(item);
+
                 if (item.quality < 50) {
-                    if (item.sellIn < 11) upgrade(item);
-                    if (item.sellIn < 6) upgrade(item);
+                    item.quality = item.quality + 1;
+
+                    if (item.sellIn < 11) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
+                        }
+                    }
+
+                    if (item.sellIn < 6) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
+                        }
+                    }
                 }
-                item.sellIn--;
             }
 
-            if (item.name.equals(ItemName.DEXTERITY)) {
-                updateItems(item);
-                item.sellIn--;
+            if (!item.name.equals(ItemName.SULFURAS)) {
+                item.sellIn = item.sellIn - 1;
             }
 
-            if (item.name.equals(ItemName.ELIXIR)) {
-                updateItems(item);
-                item.sellIn--;
-            }
+            if (item.sellIn < 0) {
+                if (!item.name.equals(ItemName.AGED_BRIE)) {
+                    if (!item.name.equals(ItemName.BACKSTAGE)) {
+                        if (item.quality > 0) {
+                            if (!item.name.equals(ItemName.SULFURAS)) {
+                                item.quality = item.quality - 1;
+                            }
+                        }
+                    }
+                    if (item.name.equals(ItemName.BACKSTAGE)) {
+                        item.quality = item.quality - item.quality;
+                    }
+                }
 
-            if (item.name.equals(ItemName.CONJURED)) {
-                updateItems(item);
-                item.sellIn--;
-            }
-
-            if (item.name.equals(ItemName.SULFURAS)) {
+                if (item.name.equals(ItemName.AGED_BRIE)) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 1;
+                    }
+                }
             }
         }
-    }
-
-    private static void updateItems(Item item) {
-        if (item.sellIn < 0) degrade(item);
-        degrade(item);
-    }
-
-    private static void upgrade(Item item) {
-        if (item.quality < 50) item.quality++;
-    }
-
-    private static void degrade(Item item) {
-        if (item.quality > 0) item.quality--;
     }
 }
