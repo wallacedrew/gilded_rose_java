@@ -48,8 +48,24 @@ class GildedRoseTest {
         validate(originalItem, expectedItem);
     }
 
+    @Test
+    void updateQuality_updateAgedBrie_for_four_days() {
+        Item originalItem = new Item("Aged Brie", 2, 0);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 4);
+        validateMultiple(originalItem, expectedItem);
+    }
+
     private static void validate(Item originalItem, Item expectedItem) {
         GildedRose app = setupGildedRose(originalItem);
+        app.updateQuality();
+        assertEquals(expectedItem.toString(), app.items[0].toString());
+    }
+
+    private static void validateMultiple(Item originalItem, Item expectedItem) {
+        GildedRose app = setupGildedRose(originalItem);
+        app.updateQuality();
+        app.updateQuality();
+        app.updateQuality();
         app.updateQuality();
         assertEquals(expectedItem.toString(), app.items[0].toString());
     }
