@@ -12,7 +12,6 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
 
-
             if (item.name.equals(ItemName.BACKSTAGE)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
@@ -31,13 +30,13 @@ class GildedRose {
                 if (item.sellIn < 0) {
                     item.quality = item.quality - item.quality;
                 }
-            }
 
-            if (!item.name.equals(ItemName.SULFURAS)) {
                 item.sellIn = item.sellIn - 1;
             }
 
             if (item.name.equals(ItemName.AGED_BRIE)) {
+                item.sellIn = item.sellIn - 1;
+
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
                 }
@@ -50,6 +49,8 @@ class GildedRose {
             }
 
             if (item.name.equals(ItemName.DEXTERITY)) {
+                item.sellIn = item.sellIn - 1;
+
                 if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
@@ -62,6 +63,8 @@ class GildedRose {
             }
 
             if (item.name.equals(ItemName.ELIXIR)) {
+                item.sellIn = item.sellIn - 1;
+
                 if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
@@ -73,6 +76,8 @@ class GildedRose {
             }
 
             if (item.name.equals(ItemName.CONJURED)) {
+                item.sellIn = item.sellIn - 1;
+
                 if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
