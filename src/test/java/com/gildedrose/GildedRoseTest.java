@@ -56,6 +56,13 @@ class GildedRoseTest {
     }
 
     @Test
+    void updateQuality_updateAgedBrie_for_four_days_upgrades_with_age() {
+        Item originalItem = new Item(ItemName.AGED_BRIE, -1, 6);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 7);
+        validate(expectedItem, originalItem);
+    }
+
+    @Test
     void updateQuality_updateDexterity_for_four_days() {
         Item originalItem = new Item(ItemName.DEXTERITY, 10, 20);
         Item expectedItem = expectedUpdate(originalItem.name, 6, 16);
@@ -81,6 +88,13 @@ class GildedRoseTest {
         Item originalItem = new Item(ItemName.BACKSTAGE, 5, 49);
         Item expectedItem = expectedUpdate(originalItem.name, 1, 50);
         validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_updateBackstage_upgrades_with_age() {
+        Item originalItem = new Item(ItemName.BACKSTAGE, -1, 6);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 9);
+        validate(expectedItem, originalItem);
     }
 
     @Test
