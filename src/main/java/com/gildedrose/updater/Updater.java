@@ -4,7 +4,9 @@ import com.gildedrose.Item;
 
 public abstract class Updater {
 
-    public abstract void update(Item item);
+    public Updater() {}
+
+    public abstract void update();
 
     public boolean qualityNotMaxed(Item item) {
         return item.quality < 50;
