@@ -44,8 +44,29 @@ class GildedRoseTest {
     @Test
     void updateQuality_updateConjured() {
         Item originalItem = new Item(ItemName.CONJURED, 3, 6);
-        Item expectedItem = expectedUpdate(originalItem.name, 2, 5);
+        Item expectedItem = expectedUpdate(originalItem.name, 2, 4);
         validate(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_updateConjured_for_four_days() {
+        Item originalItem = new Item(ItemName.CONJURED, 3, 6);
+        Item expectedItem = expectedUpdate(originalItem.name, -1, 0);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_conjured_quality_degrades_twice_as_fast_once_expired() {
+        Item originalItem = new Item(ItemName.CONJURED, -1, 8);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 4);
+        validate(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_conjured_quality_not_negative() {
+        Item originalItem = new Item(ItemName.CONJURED, 0, 1);
+        Item expectedItem = expectedUpdate(originalItem.name, -4, 0);
+        validateMultiple(expectedItem, originalItem);
     }
 
     @Test
@@ -126,20 +147,6 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_updateConjured_for_four_days() {
-        Item originalItem = new Item(ItemName.CONJURED, 3, 6);
-        Item expectedItem = expectedUpdate(originalItem.name, -1, 1);
-        validateMultiple(expectedItem, originalItem);
-    }
-
-    @Test
-    void updateQuality_conjured_quality_degrades_twice_as_fast_once_expired() {
-        Item originalItem = new Item(ItemName.CONJURED, -1, 8);
-        Item expectedItem = expectedUpdate(originalItem.name, -2, 6);
-        validate(expectedItem, originalItem);
-    }
-
-    @Test
     void updateQuality_elixir_quality_degrades_twice_as_fast_once_expired() {
         Item originalItem = new Item(ItemName.ELIXIR, -1, 8);
         Item expectedItem = expectedUpdate(originalItem.name, -2, 6);
@@ -151,13 +158,6 @@ class GildedRoseTest {
         Item originalItem = new Item(ItemName.DEXTERITY, -1, 8);
         Item expectedItem = expectedUpdate(originalItem.name, -2, 6);
         validate(expectedItem, originalItem);
-    }
-
-    @Test
-    void updateQuality_conjured_quality_not_negative() {
-        Item originalItem = new Item(ItemName.CONJURED, 0, 1);
-        Item expectedItem = expectedUpdate(originalItem.name, -4, 0);
-        validateMultiple(expectedItem, originalItem);
     }
 
     @Test

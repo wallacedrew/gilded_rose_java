@@ -11,7 +11,14 @@ public class ConjureUpdater extends Updater {
 
     public void update() {
         age(item);
+        decay();
+        if (hasExpired(item)) {
+            decay();
+        }
+    }
+
+    private void decay() {
         degrade(item);
-        if (hasExpired(item)) degrade(item);
+        degrade(item);
     }
 }
