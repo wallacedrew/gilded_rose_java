@@ -28,6 +28,7 @@ class GildedRose {
                 updateItem(item);
             }
             else if (item.name.equals(ItemName.SULFURAS)) {
+                updateSulfuras(item);
             }
         }
     }
@@ -52,6 +53,9 @@ class GildedRose {
         age(item);
         degrade(item);
         if (hasExpired(item)) degrade(item);
+    }
+
+    private static void updateSulfuras(Item item) {
     }
 
     private static boolean qualityNotMaxed(Item item) {
