@@ -13,25 +13,26 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
-
+            Updater updater = null;
             if (item.name.equals(ItemName.BACKSTAGE)) {
-                new BackstageUpdater().update(item);
+                updater = new BackstageUpdater();
             }
             else if (item.name.equals(ItemName.AGED_BRIE)) {
-                new AgedBrieUpdater().update(item);
+                updater = new AgedBrieUpdater();
             }
             else if (item.name.equals(ItemName.DEXTERITY)) {
-                new DexterityUpdater().update(item);
+                updater = new DexterityUpdater();
             }
             else if (item.name.equals(ItemName.ELIXIR)) {
-                new ElixirUpdater().update(item);
+                updater = new ElixirUpdater();
             }
             else if (item.name.equals(ItemName.CONJURED)) {
-                new ConjureUpdater().update(item);
+                updater = new ConjureUpdater();
             }
             else if (item.name.equals(ItemName.SULFURAS)) {
-                new SulfurasUpdater().update(item);
+                updater = new SulfurasUpdater();
             }
+            updater.update(item);
         }
     }
 
