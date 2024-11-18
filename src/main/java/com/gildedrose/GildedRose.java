@@ -33,16 +33,6 @@ class GildedRose {
                 }
             }
 
-            if (!item.name.equals(ItemName.AGED_BRIE)) {
-                if (!item.name.equals(ItemName.BACKSTAGE)) {
-                    if (!item.name.equals(ItemName.SULFURAS)) {
-                        if (item.quality > 0) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                }
-            }
-
             if (!item.name.equals(ItemName.SULFURAS)) {
                 item.sellIn = item.sellIn - 1;
             }
@@ -60,6 +50,10 @@ class GildedRose {
             }
 
             if (item.name.equals(ItemName.DEXTERITY)) {
+                if (item.quality > 0) {
+                    item.quality = item.quality - 1;
+                }
+
                 if (item.sellIn < 0) {
                     if (item.quality > 0) {
                         item.quality = item.quality - 1;
@@ -68,6 +62,9 @@ class GildedRose {
             }
 
             if (item.name.equals(ItemName.ELIXIR)) {
+                if (item.quality > 0) {
+                    item.quality = item.quality - 1;
+                }
                 if (item.sellIn < 0) {
                     if (item.quality > 0) {
                         item.quality = item.quality - 1;
@@ -76,6 +73,9 @@ class GildedRose {
             }
 
             if (item.name.equals(ItemName.CONJURED)) {
+                if (item.quality > 0) {
+                    item.quality = item.quality - 1;
+                }
                 if (item.sellIn < 0) {
                     if (item.quality > 0) {
                         item.quality = item.quality - 1;
