@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-import com.gildedrose.updater.Updater;
+import com.gildedrose.updater.*;
 
 class GildedRose {
 
@@ -15,22 +15,22 @@ class GildedRose {
             Item item = items[i];
 
             if (item.name.equals(ItemName.BACKSTAGE)) {
-                new Updater().updateBackstage(item);
+                new BackstageUpdater().update(item);
             }
             else if (item.name.equals(ItemName.AGED_BRIE)) {
-                new Updater().updateAgedBrie(item);
+                new AgedBrieUpdater().update(item);
             }
             else if (item.name.equals(ItemName.DEXTERITY)) {
-                new Updater().updateItem(item);
+                new DexterityUpdater().update(item);
             }
             else if (item.name.equals(ItemName.ELIXIR)) {
-                new Updater().updateItem(item);
+                new ElixirUpdater().update(item);
             }
             else if (item.name.equals(ItemName.CONJURED)) {
-                new Updater().updateItem(item);
+                new ConjureUpdater().update(item);
             }
             else if (item.name.equals(ItemName.SULFURAS)) {
-                new Updater().updateSulfuras(item);
+                new SulfurasUpdater().update(item);
             }
         }
     }
