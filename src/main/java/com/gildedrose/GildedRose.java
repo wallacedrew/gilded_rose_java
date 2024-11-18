@@ -36,6 +36,15 @@ class GildedRose {
                 }
             }
 
+            if (item.name.equals(ItemName.DEXTERITY)) {
+            }
+
+            if (item.name.equals(ItemName.ELIXIR)) {
+            }
+
+            if (item.name.equals(ItemName.CONJURED)) {
+            }
+
             if (!item.name.equals(ItemName.AGED_BRIE)) {
                 if (!item.name.equals(ItemName.BACKSTAGE)) {
                     if (!item.name.equals(ItemName.SULFURAS)) {
