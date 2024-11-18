@@ -13,57 +13,59 @@ class GildedRose {
             Item item = items[i];
 
             if (item.name.equals(ItemName.AGED_BRIE)) {
-                if (item.quality < 50) {
-                    item.quality++;
-                }
+                upgrade(item);
+                item.sellIn--;
             }
 
             if (item.name.equals(ItemName.BACKSTAGE)) {
-                if (item.quality < 50) {
-                    item.quality++;
-                }
+                upgrade(item);
 
                 if (item.quality < 50) {
                     if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality++;
-                        }
+                        upgrade(item);
                     }
 
                     if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality++;
-                        }
+                        upgrade(item);
                     }
                 }
+                item.sellIn--;
             }
 
             if (item.name.equals(ItemName.DEXTERITY)) {
                 updateItems(item);
+                item.sellIn--;
             }
 
             if (item.name.equals(ItemName.ELIXIR)) {
                 updateItems(item);
+                item.sellIn--;
             }
 
             if (item.name.equals(ItemName.CONJURED)) {
                 updateItems(item);
-            }
-
-            if (!item.name.equals(ItemName.SULFURAS)) {
                 item.sellIn--;
             }
 
+            if (item.name.equals(ItemName.SULFURAS)) {
+            }
         }
     }
 
     private static void updateItems(Item item) {
         if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                item.quality--;
-            }
+            degrade(item);
         }
+        degrade(item);
+    }
 
+    private static void upgrade(Item item) {
+        if (item.quality < 50) {
+            item.quality++;
+        }
+    }
+
+    private static void degrade(Item item) {
         if (item.quality > 0) {
             item.quality--;
         }
