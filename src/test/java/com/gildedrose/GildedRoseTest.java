@@ -84,6 +84,13 @@ class GildedRoseTest {
     }
 
     @Test
+    void updateQuality_updateBackstage_lo_grade_for_four_days() {
+        Item originalItem = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 1);
+        Item expectedItem = expectedUpdate(originalItem.name, -3, 13);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
     void updateQuality_updateConjured_for_four_days() {
         Item originalItem = new Item("Conjured Mana Cake", 3, 6);
         Item expectedItem = expectedUpdate(originalItem.name, -1, 2);
