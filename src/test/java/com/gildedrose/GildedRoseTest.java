@@ -98,11 +98,22 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_updateBackstage_lo_grade_for_four_days() {
+    void updateQuality_backstage_lo_grade_for_four_days() {
         Item originalItem = new Item(ItemName.BACKSTAGE, 1, 1);
         Item expectedItem = expectedUpdate(originalItem.name, -3, 13);
         validateMultiple(expectedItem, originalItem);
     }
+
+    // Quality increases by 2 when there are 10 days or less
+    @Test
+    void updateQuality_backstage_upgrades_by_2_when_10_days_or_less() {
+        Item originalItem = new Item(ItemName.BACKSTAGE, 10, 1);
+        Item expectedItem = expectedUpdate(originalItem.name, 6, 9);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    // Quality increases by 3 when there are 5 days or less
+    // Quality drops to 0 after the concert
 
     @Test
     void updateQuality_updateConjured_for_four_days() {
