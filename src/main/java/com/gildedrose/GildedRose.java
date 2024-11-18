@@ -15,38 +15,50 @@ class GildedRose {
             if (item.name.equals(ItemName.BACKSTAGE)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
+                }
+                if (item.quality < 50) {
                     if (item.sellIn < 11) upgrade(item);
                     if (item.sellIn < 6) upgrade(item);
                 }
 
-                if (item.sellIn < 0) {
-                    item.quality = item.quality - item.quality;
-                }
-                item.sellIn = item.sellIn - 1;
+                if (hasExpired(item)) degradeToZero(item);
+                age(item);
             }
             else if (item.name.equals(ItemName.AGED_BRIE)) {
-                item.sellIn = item.sellIn - 1;
+                age(item);
                 upgrade(item);
-                if (item.sellIn < 0) upgrade(item);
+                if (hasExpired(item)) upgrade(item);
             }
             else if (item.name.equals(ItemName.DEXTERITY)) {
-                item.sellIn = item.sellIn - 1;
+                age(item);
                 degrade(item);
-                if (item.sellIn < 0) degrade(item);
+                if (hasExpired(item)) degrade(item);
             }
             else if (item.name.equals(ItemName.ELIXIR)) {
-                item.sellIn = item.sellIn - 1;
+                age(item);
                 degrade(item);
-                if (item.sellIn < 0) degrade(item);
+                if (hasExpired(item)) degrade(item);
             }
             else if (item.name.equals(ItemName.CONJURED)) {
-                item.sellIn = item.sellIn - 1;
+                age(item);
                 degrade(item);
-                if (item.sellIn < 0) degrade(item);
+                if (hasExpired(item)) degrade(item);
             }
             else if (item.name.equals(ItemName.SULFURAS)) {
             }
         }
+    }
+
+    private static void degradeToZero(Item item) {
+        item.quality = 0;
+    }
+
+    private static boolean hasExpired(Item item) {
+        return item.sellIn < 0;
+    }
+
+    private static void age(Item item) {
+        item.sellIn = item.sellIn - 1;
     }
 
     private static void upgrade(Item item) {
