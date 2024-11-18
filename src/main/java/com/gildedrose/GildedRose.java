@@ -21,7 +21,9 @@ class GildedRose {
             if (item.name.equals(ItemName.BACKSTAGE)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
+                }
 
+                if (item.quality < 50) {
                     if (item.sellIn < 11) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1;
