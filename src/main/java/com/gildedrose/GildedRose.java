@@ -13,15 +13,14 @@ class GildedRose {
             Item item = items[i];
 
             if (item.name.equals(ItemName.BACKSTAGE)) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-                if (item.quality < 50) {
+                upgrade(item);
+
+                if (qualityNotMaxed(item)) {
                     if (item.sellIn < 11) upgrade(item);
                     if (item.sellIn < 6) upgrade(item);
                 }
 
-                if (hasExpired(item)) degradeToZero(item);
+                if (hasExpired(item)) item.quality = 0;
                 age(item);
             }
             else if (item.name.equals(ItemName.AGED_BRIE)) {
@@ -49,8 +48,8 @@ class GildedRose {
         }
     }
 
-    private static void degradeToZero(Item item) {
-        item.quality = 0;
+    private static boolean qualityNotMaxed(Item item) {
+        return item.quality < 50;
     }
 
     private static boolean hasExpired(Item item) {
@@ -58,18 +57,14 @@ class GildedRose {
     }
 
     private static void age(Item item) {
-        item.sellIn = item.sellIn - 1;
+        item.sellIn--;
     }
 
     private static void upgrade(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
+        if (qualityNotMaxed(item)) item.quality++;
     }
 
     private static void degrade(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-        }
+        if (item.quality > 0) item.quality--;
     }
 }
