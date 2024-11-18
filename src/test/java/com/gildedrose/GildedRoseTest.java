@@ -153,6 +153,13 @@ class GildedRoseTest {
         validateMultiple(expectedItem, originalItem);
     }
 
+    @Test
+    void updateQuality_sulfuras_is_never_sells_or_degrades() {
+        Item originalItem = new Item(ItemName.SULFURAS, 7, 7);
+        Item expectedItem = expectedUpdate(originalItem.name, 7, 7);
+        validateMultiple(expectedItem, originalItem);
+    }
+
     private static void validate(Item expectedItem, Item originalItem) {
         GildedRose app = setupGildedRose(originalItem);
         app.updateQuality();
