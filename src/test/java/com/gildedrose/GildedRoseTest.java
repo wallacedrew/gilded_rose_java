@@ -112,9 +112,23 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_quality_degrades_twice_as_fast_once_expired() {
-        Item originalItem = new Item(ItemName.CONJURED, -1, 6);
-        Item expectedItem = expectedUpdate(originalItem.name, -2, 4);
+    void updateQuality_conjured_quality_degrades_twice_as_fast_once_expired() {
+        Item originalItem = new Item(ItemName.CONJURED, -1, 8);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 6);
+        validate(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_elixir_quality_degrades_twice_as_fast_once_expired() {
+        Item originalItem = new Item(ItemName.ELIXIR, -1, 8);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 6);
+        validate(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_dexterity_quality_degrades_twice_as_fast_once_expired() {
+        Item originalItem = new Item(ItemName.DEXTERITY, -1, 8);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 6);
         validate(expectedItem, originalItem);
     }
 
