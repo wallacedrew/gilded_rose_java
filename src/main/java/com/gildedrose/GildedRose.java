@@ -19,15 +19,9 @@ class GildedRose {
 
             if (item.name.equals(ItemName.BACKSTAGE)) {
                 upgrade(item);
-
                 if (item.quality < 50) {
-                    if (item.sellIn < 11) {
-                        upgrade(item);
-                    }
-
-                    if (item.sellIn < 6) {
-                        upgrade(item);
-                    }
+                    if (item.sellIn < 11) upgrade(item);
+                    if (item.sellIn < 6) upgrade(item);
                 }
                 item.sellIn--;
             }
@@ -53,21 +47,15 @@ class GildedRose {
     }
 
     private static void updateItems(Item item) {
-        if (item.sellIn < 0) {
-            degrade(item);
-        }
+        if (item.sellIn < 0) degrade(item);
         degrade(item);
     }
 
     private static void upgrade(Item item) {
-        if (item.quality < 50) {
-            item.quality++;
-        }
+        if (item.quality < 50) item.quality++;
     }
 
     private static void degrade(Item item) {
-        if (item.quality > 0) {
-            item.quality--;
-        }
+        if (item.quality > 0) item.quality--;
     }
 }
