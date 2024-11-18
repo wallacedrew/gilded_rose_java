@@ -19,7 +19,10 @@ class GildedRose {
                         item.quality = item.quality - 1;
                     }
                 }
-            } else {
+            }
+
+            if (item.name.equals(ItemName.AGED_BRIE)
+                    || item.name.equals(ItemName.BACKSTAGE)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
 
@@ -51,10 +54,13 @@ class GildedRose {
                                 item.quality = item.quality - 1;
                             }
                         }
-                    } else {
+                    }
+                    if (item.name.equals(ItemName.BACKSTAGE)) {
                         item.quality = item.quality - item.quality;
                     }
-                } else {
+                }
+
+                if (item.name.equals(ItemName.AGED_BRIE)) {
                     if (item.quality < 50) {
                         item.quality = item.quality + 1;
                     }
