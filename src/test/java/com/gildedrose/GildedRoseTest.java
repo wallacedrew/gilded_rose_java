@@ -133,9 +133,23 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_quality_not_negative() {
-        Item originalItem = new Item(ItemName.CONJURED, -1, 6);
-        Item expectedItem = expectedUpdate(originalItem.name, -5, 0);
+    void updateQuality_conjured_quality_not_negative() {
+        Item originalItem = new Item(ItemName.CONJURED, 0, 1);
+        Item expectedItem = expectedUpdate(originalItem.name, -4, 0);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_elixir_quality_not_negative() {
+        Item originalItem = new Item(ItemName.ELIXIR, 0, 1);
+        Item expectedItem = expectedUpdate(originalItem.name, -4, 0);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_dexterity_quality_not_negative() {
+        Item originalItem = new Item(ItemName.DEXTERITY, 0, 1);
+        Item expectedItem = expectedUpdate(originalItem.name, -4, 0);
         validateMultiple(expectedItem, originalItem);
     }
 
