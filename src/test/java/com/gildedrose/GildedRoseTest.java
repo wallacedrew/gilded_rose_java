@@ -97,6 +97,20 @@ class GildedRoseTest {
         validateMultiple(expectedItem, originalItem);
     }
 
+    @Test
+    void updateQuality_quality_degrades_twice_as_fast_once_expired() {
+        Item originalItem = new Item("Conjured Mana Cake", -1, 6);
+        Item expectedItem = expectedUpdate(originalItem.name, -2, 4);
+        validate(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_quality_not_negative() {
+        Item originalItem = new Item("Conjured Mana Cake", -1, 6);
+        Item expectedItem = expectedUpdate(originalItem.name, -5, 0);
+        validateMultiple(expectedItem, originalItem);
+    }
+
     private static void validate(Item expectedItem, Item originalItem) {
         GildedRose app = setupGildedRose(originalItem);
         app.updateQuality();
