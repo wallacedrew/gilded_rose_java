@@ -55,6 +55,41 @@ class GildedRoseTest {
         validateMultiple(expectedItem, originalItem);
     }
 
+    @Test
+    void updateQuality_updateDexterity_for_four_days() {
+        Item originalItem = new Item("+5 Dexterity Vest", 10, 20);
+        Item expectedItem = expectedUpdate(originalItem.name, 6, 16);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_updateElixir_for_four_days() {
+        Item originalItem = new Item("Elixir of the Mongoose", 5, 7);
+        Item expectedItem = expectedUpdate(originalItem.name, 1, 3);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_updateSulfuras_for_four_days() {
+        Item originalItem = new Item("Sulfuras, Hand of Ragnaros", -1, 80);
+        Item expectedItem = expectedUpdate(originalItem.name, -1, 80);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_updateBackstage_for_four_days() {
+        Item originalItem = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49);
+        Item expectedItem = expectedUpdate(originalItem.name, 1, 50);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_updateConjured_for_four_days() {
+        Item originalItem = new Item("Conjured Mana Cake", 3, 6);
+        Item expectedItem = expectedUpdate(originalItem.name, -1, 2);
+        validateMultiple(expectedItem, originalItem);
+    }
+
     private static void validate(Item expectedItem, Item originalItem) {
         GildedRose app = setupGildedRose(originalItem);
         app.updateQuality();
