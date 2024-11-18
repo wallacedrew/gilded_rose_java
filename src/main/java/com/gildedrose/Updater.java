@@ -2,5 +2,5 @@ package com.gildedrose;
 
 public abstract class Updater {
 
-    public abstract void update();
+    public abstract void update(Item item);
 }
