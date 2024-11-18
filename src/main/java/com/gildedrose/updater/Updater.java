@@ -8,23 +8,23 @@ public abstract class Updater {
 
     public abstract void update();
 
-    public boolean qualityNotMaxed(Item item) {
+    protected boolean qualityNotMaxed(Item item) {
         return item.quality < 50;
     }
 
-    public boolean hasExpired(Item item) {
+    protected boolean hasExpired(Item item) {
         return item.sellIn < 0;
     }
 
-    public void age(Item item) {
+    protected void age(Item item) {
         item.sellIn--;
     }
 
-    public void upgrade(Item item) {
+    protected void upgrade(Item item) {
         if (qualityNotMaxed(item)) item.quality++;
     }
 
-    public void degrade(Item item) {
+    protected void degrade(Item item) {
         if (item.quality > 0) item.quality--;
     }
 }
