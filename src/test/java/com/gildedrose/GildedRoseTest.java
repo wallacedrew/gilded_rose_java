@@ -104,7 +104,6 @@ class GildedRoseTest {
         validateMultiple(expectedItem, originalItem);
     }
 
-    // Quality increases by 2 when there are 10 days or less
     @Test
     void updateQuality_backstage_upgrades_by_2_when_10_days_or_less() {
         Item originalItem = new Item(ItemName.BACKSTAGE, 10, 1);
@@ -116,6 +115,13 @@ class GildedRoseTest {
     void updateQuality_backstage_upgrades_by_3_when_5_days_or_less() {
         Item originalItem = new Item(ItemName.BACKSTAGE, 5, 1);
         Item expectedItem = expectedUpdate(originalItem.name, 1, 13);
+        validateMultiple(expectedItem, originalItem);
+    }
+
+    @Test
+    void updateQuality_backstage_degrades_to_zero_after_concert() {
+        Item originalItem = new Item(ItemName.BACKSTAGE, -1, 1);
+        Item expectedItem = expectedUpdate(originalItem.name, -5, 0);
         validateMultiple(expectedItem, originalItem);
     }
 
