@@ -13,39 +13,45 @@ class GildedRose {
             Item item = items[i];
 
             if (item.name.equals(ItemName.BACKSTAGE)) {
-                upgrade(item);
-
-                if (qualityNotMaxed(item)) {
-                    if (item.sellIn < 11) upgrade(item);
-                    if (item.sellIn < 6) upgrade(item);
-                }
-
-                if (hasExpired(item)) item.quality = 0;
-                age(item);
+                updateBackstage(item);
             }
             else if (item.name.equals(ItemName.AGED_BRIE)) {
-                age(item);
-                upgrade(item);
-                if (hasExpired(item)) upgrade(item);
+                updateAgedBrie(item);
             }
             else if (item.name.equals(ItemName.DEXTERITY)) {
-                age(item);
-                degrade(item);
-                if (hasExpired(item)) degrade(item);
+                updateItem(item);
             }
             else if (item.name.equals(ItemName.ELIXIR)) {
-                age(item);
-                degrade(item);
-                if (hasExpired(item)) degrade(item);
+                updateItem(item);
             }
             else if (item.name.equals(ItemName.CONJURED)) {
-                age(item);
-                degrade(item);
-                if (hasExpired(item)) degrade(item);
+                updateItem(item);
             }
             else if (item.name.equals(ItemName.SULFURAS)) {
             }
         }
+    }
+
+    private static void updateAgedBrie(Item item) {
+        age(item);
+        upgrade(item);
+        if (hasExpired(item)) upgrade(item);
+    }
+
+    private static void updateBackstage(Item item) {
+        upgrade(item);
+        if (qualityNotMaxed(item)) {
+            if (item.sellIn < 11) upgrade(item);
+            if (item.sellIn < 6) upgrade(item);
+        }
+        if (hasExpired(item)) item.quality = 0;
+        age(item);
+    }
+
+    private static void updateItem(Item item) {
+        age(item);
+        degrade(item);
+        if (hasExpired(item)) degrade(item);
     }
 
     private static boolean qualityNotMaxed(Item item) {
