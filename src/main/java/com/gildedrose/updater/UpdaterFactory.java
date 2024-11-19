@@ -3,7 +3,7 @@ package com.gildedrose.updater;
 import com.gildedrose.Item;
 import com.gildedrose.ItemName;
 
-public abstract class UpdaterFactory {
+public class UpdaterFactory {
 
     public static Updater createUpdater(Item item) {
         if (item.name.equals(ItemName.BACKSTAGE)) {
